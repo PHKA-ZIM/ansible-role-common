@@ -28,3 +28,9 @@
   ansible.builtin.apt:
     name: wget
     state: present
+
+- name: Ensure that parted is installed
+  become: true
+  ansible.builtin.apt:
+    name: parted
+    state: present
