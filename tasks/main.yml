@@ -5,32 +5,9 @@
     update_cache: true
     cache_valid_time: 3600
 
-- name: Ensure that acl is installed
+- name: "Ensure that {{ item }} is installed"
   become: true
   ansible.builtin.apt:
-    name: acl
-    state: present  
-
-- name: Ensure that curl is installed
-  become: true
-  ansible.builtin.apt:
-    name: curl
+    name: "{{ item }}"
     state: present
-
-- name: Ensure that git is installed
-  become: true
-  ansible.builtin.apt:
-    name: git
-    state: present
-
-- name: Ensure that wget is installed
-  become: true
-  ansible.builtin.apt:
-    name: wget
-    state: present
-
-- name: Ensure that parted is installed
-  become: true
-  ansible.builtin.apt:
-    name: parted
-    state: present
+  loop: "common_packages"
