@@ -1,16 +1,4 @@
 ---
-- name: Check if home folder exists
-  ansible.builtin.stat:
-    path: "/home/{{ ansible_user }}"
-  register: result
-
-- name: Set home permissions
-  ansible.builtin.file:
-    path: "/home/{{ ansible_user }}"
-    mode: "750"
-    state: directory
-  when: result.stat.exists
-
 - name: Update repositories cache
   become: true
   ansible.builtin.apt:
