@@ -1,5 +1,4 @@
 ---
-common_packages:
-  - curl
-  - git
-  - wget
+common_repositories: []
+common_packages: []
+common_uninstall: false

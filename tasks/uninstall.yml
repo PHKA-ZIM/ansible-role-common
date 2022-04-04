@@ -1,0 +1,21 @@
+---
+- name: Remove repositories
+  become: true
+  ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+    update_cache: true 
+    state: absent
+  loop: "{{ common_repositories }}"
+
+- name: "Ensure that {{ item }} is uninstalled"
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+  loop: "{{ common_packages }}"
+
+- name: Update repositories cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
