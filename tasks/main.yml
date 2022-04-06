@@ -1,8 +1,8 @@
 ---
-- name: Install common
+- name: Install repositories and packages
   ansible.builtin.include_tasks: install.yml
-  when: common_uninstall == false
+  when: installer_uninstall == false
 
-- name: Uninstall common
+- name: Uninstall repositories and packages
   ansible.builtin.include_tasks: uninstall.yml
-  when: common_uninstall == true
+  when: installer_uninstall == true

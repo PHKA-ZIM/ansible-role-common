@@ -5,17 +5,17 @@
     update_cache: true
     cache_valid_time: 3600
 
-- name: Add repositories
+- name: Add repository if it is missing
   become: true
   ansible.builtin.apt_repository:
     repo: "{{ item }}"
     update_cache: true 
     state: present
-  loop: "{{ common_repositories }}"
+  loop: "{{ installer_repositories }}"
 
-- name: "Ensure that {{ item }} is installed"
+- name: Ensure that package is installed
   become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-  loop: "{{ common_packages }}"
+  loop: "{{ installer_packages }}"
