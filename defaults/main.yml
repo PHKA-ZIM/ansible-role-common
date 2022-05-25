@@ -1,6 +1,7 @@
 ---
 installer_repositories: []
 installer_packages: []
+
 installer_uninstall: false
 installer_autoremove: true
 installer_purge: true
